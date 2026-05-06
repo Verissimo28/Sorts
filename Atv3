@@ -1,0 +1,24 @@
+def insertion_sort(arr):
+    contador_comparacoes = 0
+
+    for i in range(1, len(arr)):
+        chave = arr[i]
+        j = i - 1
+
+        while j >= 0:
+            contador_comparacoes += 1
+            if arr[j] > chave:
+                arr[j + 1] = arr[j]
+                j -= 1
+            else:
+                break
+
+        arr[j + 1] = chave
+
+    return arr, contador_comparacoes
+
+pagamentos = [101, 102, 103, 104, 105, 99]
+ordenado, total_comparacoes = insertion_sort(pagamentos)
+
+print(ordenado)
+print(total_comparacoes)
