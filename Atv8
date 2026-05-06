@@ -1,0 +1,23 @@
+def particao(arr, inicio, fim):
+    pivo = arr[fim]
+    i = inicio - 1
+
+    for j in range(inicio, fim):
+        if arr[j] < pivo:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+
+    arr[i + 1], arr[fim] = arr[fim], arr[i + 1]
+    return i + 1
+
+def quicksort(arr, inicio, fim):
+    if inicio < fim:
+        p = particao(arr, inicio, fim)
+        quicksort(arr, inicio, p - 1)
+        quicksort(arr, p + 1, fim)
+    return arr
+
+cpfs = [4321, 1111, 9999, 3333, 7777, 2222, 5555]
+ordenado = quicksort(cpfs, 0, len(cpfs) - 1)
+
+print(ordenado)
