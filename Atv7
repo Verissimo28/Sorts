@@ -1,0 +1,16 @@
+def particao(arr):
+    pivo = arr[-1]
+    i = -1
+
+    for j in range(len(arr) - 1):
+        if arr[j] < pivo:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+
+    arr[i + 1], arr[-1] = arr[-1], arr[i + 1]
+    return arr
+
+subsídios = [300, 150, 800, 200, 900, 500]
+resultado = particao(subsídios)
+
+print(resultado)
