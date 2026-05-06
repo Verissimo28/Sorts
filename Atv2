@@ -1,0 +1,22 @@
+def selection_sort(arr):
+    contador_trocas = 0
+    n = len(arr)
+
+    for i in range(n):
+        menor_indice = i
+
+        for j in range(i + 1, n):
+            if arr[j] < arr[menor_indice]:
+                menor_indice = j
+
+        if menor_indice != i:
+            arr[i], arr[menor_indice] = arr[menor_indice], arr[i]
+            contador_trocas += 1
+
+    return arr, contador_trocas
+
+multas = [500, 130, 880, 195, 290, 880]
+ordenado, total_trocas = selection_sort(multas)
+
+print(ordenado)
+print(total_trocas)
