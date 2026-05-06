@@ -1,0 +1,27 @@
+def merge(esquerda, direita):
+    resultado = []
+    i = j = 0
+
+    while i < len(esquerda) and j < len(direita):
+        if esquerda[i] <= direita[j]:
+            resultado.append(esquerda[i])
+            i += 1
+        else:
+            resultado.append(direita[j])
+            j += 1
+
+    while i < len(esquerda):
+        resultado.append(esquerda[i])
+        i += 1
+
+    while j < len(direita):
+        resultado.append(direita[j])
+        j += 1
+
+    return resultado
+
+escola_norte = [20, 40, 60]
+escola_sul = [10, 30, 50, 70]
+
+resultado = merge(escola_norte, escola_sul)
+print(resultado)
