@@ -1,0 +1,14 @@
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    pivo = arr[len(arr) // 2]
+    menores = [x for x in arr if x < pivo]
+    iguais = [x for x in arr if x == pivo]
+    maiores = [x for x in arr if x > pivo]
+
+    return quicksort(menores) + iguais + quicksort(maiores)
+
+lista = [38, 27, 43, 3, 9, 82, 10]
+ordenada = quicksort(lista)
+print(ordenada)
