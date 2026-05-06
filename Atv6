@@ -1,0 +1,37 @@
+def merge(esquerda, direita):
+    resultado = []
+    i = j = 0
+
+    while i < len(esquerda) and j < len(direita):
+        if esquerda[i] <= direita[j]:
+            resultado.append(esquerda[i])
+            i += 1
+        else:
+            resultado.append(direita[j])
+            j += 1
+
+    while i < len(esquerda):
+        resultado.append(esquerda[i])
+        i += 1
+
+    while j < len(direita):
+        resultado.append(direita[j])
+        j += 1
+
+    return resultado
+
+def mergesort(arr):
+    print("Dividindo...")
+    if len(arr) <= 1:
+        return arr
+
+    meio = len(arr) // 2
+    esquerda = mergesort(arr[:meio])
+    direita = mergesort(arr[meio:])
+
+    return merge(esquerda, direita)
+
+matriculas = [44, 21, 98, 12, 55, 73, 31, 8]
+ordenado = mergesort(matriculas)
+
+print(ordenado)
