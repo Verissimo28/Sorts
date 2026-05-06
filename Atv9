@@ -1,0 +1,41 @@
+comparacoes = 0
+chamadas = 0
+
+def particao(arr, inicio, fim):
+    global comparacoes
+    pivo = arr[fim]
+    i = inicio - 1
+
+    for j in range(inicio, fim):
+        comparacoes += 1
+        if arr[j] < pivo:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+
+    arr[i + 1], arr[fim] = arr[fim], arr[i + 1]
+    return i + 1
+
+def quicksort(arr, inicio, fim):
+    global chamadas
+    chamadas += 1
+
+    if inicio < fim:
+        p = particao(arr, inicio, fim)
+        quicksort(arr, inicio, p - 1)
+        quicksort(arr, p + 1, fim)
+
+    return arr
+
+vetor = [1,2,3,4,5,6,7,8,9,10]
+quicksort(vetor, 0, len(vetor) - 1)
+
+print("Comparações:", comparacoes)
+print("Chamadas recursivas:", chamadas)
+
+# O Quick Sort falha aqui porque o pivô escolhido (último elemento)
+# é sempre o maior valor do vetor já ordenado.
+# Isso faz com que a partição gere um lado com n-1 elementos e outro com 0,
+# ou seja, não há divisão equilibrada.
+# Assim, a "Divisão e Conquista" não acontece de forma eficiente,
+# e o algoritmo passa a se comportar como um laço aninhado,
+# resultando em complexidade O(n²).
